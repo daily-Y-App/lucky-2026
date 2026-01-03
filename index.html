@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>၂၀၂၆ မင်းရဲ့ ကံကြမ္မာ</title>
+    <meta property="og:title" content="🔮 ၂၀၂၆ မှာ မင်းဘာတွေ ပိုင်ဆိုင်ရမလဲ?" />
+    <meta property="og:image" content="https://i.postimg.cc/yd5g46DC/Myanmar-Zodiac-Signs-1.jpg" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap');
+        body { font-family: 'Padauk', sans-serif; background: #0f172a; color: white; text-align: center; padding: 20px; }
+        .container { max-width: 450px; margin: auto; background: #1e293b; padding: 25px; border-radius: 20px; border: 2px solid #38bdf8; }
+        input { width: 80%; padding: 12px; margin: 15px 0; border-radius: 10px; border: none; text-align: center; font-size: 16px; outline: none; }
+        .btn { background: #38bdf8; color: #0f172a; padding: 14px; border-radius: 50px; border: none; font-weight: bold; cursor: pointer; width: 100%; font-size: 18px; margin-top: 10px; }
+        #result-box { display: none; margin-top: 25px; padding: 15px; background: #334155; border-radius: 15px; border: 1px solid #38bdf8; }
+        .res-img { width: 100%; border-radius: 10px; border: 2px solid #fbbf24; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🔮 ၂၀၂၆ မှာ ဘာရမလဲ?</h1>
+    <div id="setup-box">
+        <input type="text" id="userName" placeholder="မင်းနာမည်ရေးပါ">
+        <button class="btn" onclick="startPrediction()">ကံကြမ္မာကို ကြည့်မယ် ✨</button>
+    </div>
+    <div id="result-box">
+        <img id="res-img" class="res-img" src="">
+        <h2 id="res-text" style="color:#fbbf24;"></h2>
+        <button class="btn" style="background:#1877f2; color:white;" onclick="shareOnFB()">FB မှာ ရလဒ်ပုံနဲ့ ကြွားမယ် 🚀</button>
+    </div>
+</div>
+
+<script>
+    const results = [
+        { id: 1, file: "car.html", text: "🎰 စလော့ပေါက်ပြီး ကားအမိုက်စားကြီး ဝယ်စီးရမယ်။", img: "https://images.unsplash.com/photo-1596743444293-84469648939c?w=500" },
+        { id: 2, file: "bike.html", text: "🏍️ အားကျရလောက်တဲ့ ဆိုင်ကယ်အသစ်စက်စက်ကြီး ရမယ်။", img: "https://images.unsplash.com/photo-1558981403-c5f91cbba527?w=500" },
+        { id: 3, file: "party.html", text: "💃 New Year မှာ မူးပြီးကလို့ အလုပ်မဆင်းနိုင်ဘဲ နားရမယ်။", img: "https://images.unsplash.com/photo-1514525253344-f81f3f774355?w=500" },
+        { id: 4, file: "temple.html", text: "🙏 ထိုင်းက အထင်ကရဘုရားတွေကို စိတ်အေးလက်အေး ဖူးရမယ်။", img: "https://images.unsplash.com/photo-1528154291023-a6525fabe5b4?w=500" },
+        { id: 5, file: "gold.html", text: "💰 ရွှေတွေ အများကြီးဝယ်နိုင်ပြီး သူဌေးရုပ် ပေါက်လာမယ်။", img: "https://images.unsplash.com/photo-1589758438368-0ad531db3366?w=500" },
+        { id: 6, file: "food.html", text: "🦀 Seafood တွေ အဝစားရပြီး ဗိုက်ကလေး ပူလာမယ်။", img: "https://images.unsplash.com/photo-1559740064-c6b7700a013a?w=500" },
+        { id: 7, file: "house.html", text: "🏠 မိဘတွေကို အိမ်အသစ်ကြီး ဆောက်ပေးနိုင်တဲ့ သား/သမီး အလိမ္မာဖြစ်မယ်။", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500" },
+        { id: 8, file: "love.html", text: "💍 အလုပ်ရုံထဲမှာတင် စိတ်တူကိုယ်တူ ချစ်သူအသစ်လေး ရမယ်။", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500" },
+        { id: 9, file: "phone.html", text: "📱 နောက်ဆုံးပေါ် iPhone ကို သူငယ်ချင်းတွေ အားကျအောင် ကိုင်ရမယ်။", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" }
+    ];
+
+    let currentRes = null;
+
+    function startPrediction() {
+        const name = document.getElementById('userName').value.trim();
+        if (!name) return alert("နာမည်ရေးပါဦး!");
+        currentRes = results[Math.floor(Math.random() * results.length)];
+        document.getElementById('res-img').src = currentRes.img;
+        document.getElementById('res-text').innerText = name + " ကတော့ " + currentRes.text;
+        document.getElementById('setup-box').style.display = 'none';
+        document.getElementById('result-box').style.display = 'block';
+    }
+
+    function shareOnFB() {
+        // GitHub Link ကို ဒီနေရာမှာ သေချာစစ်ပါ
+        const baseUrl = "https://daily-y-app.github.io/lucky-2026/"; 
+        const shareUrl = baseUrl + currentRes.file;
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, '_blank');
+    }
+</script>
+</body>
+</html>
